@@ -10,7 +10,13 @@
     },
     methods:{
       toggleStatus(){
-        if(this.status === 'active')
+        if(this.status === 'active'){
+          this.status = 'pending';
+        } else if(this.status === 'pending'){
+          this.status = 'inactive';
+        } else {
+          this.status = 'active';
+        }
       }
     }
   }
@@ -29,8 +35,9 @@
       <li v-for="task in tasks " :key="task">{{ task }}</li>
     </ul>
     <a v-bind:href="link" target="_blank">Go to google</a>
+    <br/>
 
-    <button v-on="click"></button>
+    <button @click="toggleStatus">Change status</button>
   </div>
 
 
